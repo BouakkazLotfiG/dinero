@@ -18,6 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('expenses/', include('expenses.urls')),
+    path('expense/', include('expenses.urls')),
     path('income/', include('income.urls')),
 ]
