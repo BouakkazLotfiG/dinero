@@ -4,6 +4,7 @@ from rest_framework import status
 from .models import Expense
 from .serializers import ExpenseSerializer
 from django.http import Http404
+from django.db.models import Sum
 
 class getExpenses(APIView):
     """
