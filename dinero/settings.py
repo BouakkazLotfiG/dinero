@@ -59,7 +59,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5173",  # Replace with the actual domain of your frontend
+    "http://127.0.0.1:5173",
 ]
 CORS_ALLOW_METHODS = [
     'GET',
@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'dinero.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME'),
+        'NAME':'railway',
         'USER': 'postgres',
         'PASSWORD': os.environ.get('PASSWORD'),
         'HOST': os.environ.get('HOST'),
