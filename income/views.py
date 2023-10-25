@@ -45,4 +45,8 @@ class deleteIncome(APIView):
             return Income.objects.get(pk=pk)
         except Income.DoesNotExist:
             raise Http404
-        
+
+class TotalIncome(APIView):
+    def get(self, request, format=None):
+        total_income = Income.objects.aggregate(total=Sum('amount'))
+        return Response({'total_income': total_income['total']})
