@@ -44,3 +44,7 @@ class deleteExpense(APIView):
         except Expense.DoesNotExist:
             raise Http404
 
+class TotalExpense(APIView):
+    def get(self, request, format=None):
+        total_expense = Expense.objects.aggregate(total=Sum('amount'))
+        return Response({'total_expense': total_expense['total']})
