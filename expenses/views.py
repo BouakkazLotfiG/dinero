@@ -5,6 +5,7 @@ from .models import Expense
 from .serializers import ExpenseSerializer
 from django.http import Http404
 from django.db.models import Sum
+from rest_framework.pagination import PageNumberPagination
 
 class getExpenses(APIView):
     """
@@ -12,9 +13,11 @@ class getExpenses(APIView):
     """
 
     def get(self, request, format=None):
+        paginator = PageNumberPagination()
         expenses = Expense.objects.all()
-        serializer = ExpenseSerializer(expenses, many=True)
-        return Response(serializer.data)
+        result_page = paginator.paginate_queryset(expenses, request)
+        serializer = ExpenseSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
 class createExpense(APIView):
     """

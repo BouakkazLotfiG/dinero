@@ -6,15 +6,19 @@ from .serializers import IncomeSerializer
 from django.http import Http404
 from django.db.models import Sum
 
+from rest_framework.pagination import PageNumberPagination
+
 class getIncome(APIView):
     """
-    List all income entries.
+    List all expenses.
     """
 
     def get(self, request, format=None):
-        income_entries = Income.objects.all()
-        serializer = IncomeSerializer(income_entries, many=True)
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        expenses = Income.objects.all()
+        result_page = paginator.paginate_queryset(expenses, request)
+        serializer = IncomeSerializer(result_page, many=True)
+        return paginator.get_paginated_response(serializer.data)
 
 
 class createIncome(APIView):
