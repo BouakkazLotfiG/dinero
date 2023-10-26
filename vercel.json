@@ -1,0 +1,14 @@
+{
+    "builds": [
+      {
+        "src": "dinero/wsgi.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "dinero/wsgi.py"
+      }
+    ]
+}
