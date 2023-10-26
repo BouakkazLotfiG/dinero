@@ -61,6 +61,8 @@ MIDDLEWARE = [
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5173", 
+    "bl-dinero.vercel.app",
+    "https://bl-dinero.vercel.app",
 ]
 CORS_ALLOW_METHODS = [
     'GET',
